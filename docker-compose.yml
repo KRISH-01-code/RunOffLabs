@@ -1,0 +1,22 @@
+# Run the whole app with one command:  docker compose up --build
+# then open http://localhost:3000 (or the port in RUNOFFLAB_PORT).
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - runofflab-data:/data # saved projects survive restarts and rebuilds
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        RUNOFFLAB_API_URL: http://backend:8000
+    ports:
+      - "${RUNOFFLAB_PORT:-3000}:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  runofflab-data:

@@ -1,0 +1,17 @@
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+backend/runs/
+backend/*.db
+backend/*.db-*
+node_modules/
+.next/
+*.egg-info/
+*.log
+*.tsbuildinfo
+frontend/.next-e2e/
+frontend/test-results/
+frontend/playwright-report/
+backend/.e2e/
+frontend/next-env.d.ts
